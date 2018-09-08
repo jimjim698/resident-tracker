@@ -8,3 +8,6 @@ require './config/environment'
 
 use Rack::MethodOverride
 run ApplicationController
+use ManagerController
+use ResidentController
+use SanctionController
