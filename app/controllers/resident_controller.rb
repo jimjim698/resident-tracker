@@ -1,0 +1,3 @@
+class ResidentController < ApplicationController
+
+end 

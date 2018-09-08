@@ -1,0 +1,4 @@
+class SanctionController < ApplicationController
+
+
+end 
