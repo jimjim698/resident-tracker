@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_221614) do
+ActiveRecord::Schema.define(version: 2018_09_08_224711) do
 
   create_table "managers", force: :cascade do |t|
     t.string "name"
+    t.string "password_digest"
+    t.string "email"
+  end
+
+  create_table "residents", force: :cascade do |t|
+    t.string "name"
+    t.integer "manager_id"
   end
 
 end
