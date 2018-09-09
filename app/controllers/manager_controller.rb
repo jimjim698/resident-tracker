@@ -9,10 +9,12 @@ class ManagerController < ApplicationController
   end
 
   post '/signup' do
-    if Manager.all.detect {|manager| manager.name == params[:manager][:name]} || params[:manager][:password]=="" || params[:manager][:name] == "" || params[:manager][:email] == ""
+    @manager= Manager.new(params[:manager])
+    @manager.name = @manager.name.downcase
+    if Manager.all.detect {|manager| manager.name == @manager.name} || params[:manager][:password]=="" || params[:manager][:name] == "" || params[:manager][:email] == ""
       redirect '/signup'
     else
-    @manager= Manager.create(params[:manager])
+    @manager.save
     session[:user_id]= @manager.id
     erb :'/managers/show'
   end
