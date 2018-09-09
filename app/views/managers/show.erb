@@ -4,6 +4,7 @@
 <br></br>
 
 <%@manager.residents.all.each do |resident|%>
+<a href="/residents/<%=resident.id%>"><%=resident.name%></a>
 <h2><%=resident.name%></h2>
 <h3>Age: <%=resident.age%></h3>
 <h3>Room Number: <%=resident.room_number%></h3>
