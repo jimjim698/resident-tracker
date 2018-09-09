@@ -1,0 +1,6 @@
+<h1>Current Sanctions For <%=@resident.name%></h1>
+<br></br>
+
+<%@resident.sanctions.each do |sanction|%>
+<p><h2><%=sanction.name%></h2></p>
+<%end%>
