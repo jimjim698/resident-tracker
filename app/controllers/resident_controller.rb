@@ -20,6 +20,7 @@ class ResidentController < ApplicationController
     @resident = Resident.find_by_id(params[:id])
     erb :'/residents/show'
     
+
   end
 
 end
