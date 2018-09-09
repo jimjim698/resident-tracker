@@ -3,6 +3,15 @@
 
 <br></br>
 
+<%@manager.residents.all do |resident|%>
+<h2><%=resident.name%></h2>
+<h3><%=resident.age%></h3>
+<h3><%=resident.room_number%></h3>
+<%end%>
+
+
+<br></br>
+
 <a href="/signout">Sign Out</a>
 <br></br>
 <a href="/residents/new">Add A New Resident</a>
