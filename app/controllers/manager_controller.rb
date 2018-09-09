@@ -25,9 +25,11 @@ class ManagerController < ApplicationController
       @manager= Manager.find_by_id(params[:id])
       erb :'/managers/show'
     end
-
   end
 
+  get '/login' do
+    erb :'managers/login'
+  end 
 
 
 end
