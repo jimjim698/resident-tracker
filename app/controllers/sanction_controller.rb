@@ -30,6 +30,11 @@ class SanctionController < ApplicationController
     erb :'/sanctions/remove'
   end
 
+  post '/sanctions/removed' do
+    raise params.inspect
+  end 
+
+
 
 
 end
