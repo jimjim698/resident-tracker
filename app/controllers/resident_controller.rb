@@ -21,6 +21,7 @@ class ResidentController < ApplicationController
 
 
   get '/residents/discharge' do
+    @manager = Manager.find_by_id(session[:user_id])
     erb :'/residents/discharge'
   end
 
