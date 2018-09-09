@@ -23,6 +23,7 @@ class ManagerController < ApplicationController
       redirect '/'
     else
       @manager= Manager.find_by_id(params[:id])
+      
       erb :'/managers/show'
     end
   end

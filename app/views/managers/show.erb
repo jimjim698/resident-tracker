@@ -3,10 +3,10 @@
 
 <br></br>
 
-<%@manager.residents.all do |resident|%>
+<%@manager.residents.all.each do |resident|%>
 <h2><%=resident.name%></h2>
-<h3><%=resident.age%></h3>
-<h3><%=resident.room_number%></h3>
+<h3>Age: <%=resident.age%></h3>
+<h3>Room Number: <%=resident.room_number%></h3>
 <%end%>
 
 
