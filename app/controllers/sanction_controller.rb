@@ -31,8 +31,16 @@ class SanctionController < ApplicationController
   end
 
   post '/sanctions/removed' do
-    raise params.inspect
-  end 
+    @resident = Resident.find_by_id(params[:resident][:id])
+    @sanctions=[]
+    params[:resident][:sanction_ids].each do |s_id|
+      @sanctions<< Sanction.find_by_id(s_id)
+      @resident.sanctions = @sanctions
+      @resident.save
+      erb :'/sanctions/show'
+    end
+
+  end
 
 
 

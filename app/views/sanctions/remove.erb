@@ -1,6 +1,7 @@
 <h1><%=@resident.name%></h1>
 
 <form class="" action="/sanctions/removed" method="post">
+  <input type="hidden" name="resident[id]" value="<%=@resident.id%>">
 
   <%@resident.sanctions.each do |sanction|%>
   <p><input type="checkbox" name="resident[sanction_ids][]" value="<%=sanction.id%>" <%='checked' if @resident.sanctions.include?(sanction)%>>
