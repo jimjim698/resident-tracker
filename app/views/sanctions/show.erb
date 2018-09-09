@@ -4,3 +4,5 @@
 <%@resident.sanctions.each do |sanction|%>
 <p><h2><%=sanction.name%></h2></p>
 <%end%>
+
+<a href="/managers/<%=@resident.manager.id%>">Return to Residents</a>

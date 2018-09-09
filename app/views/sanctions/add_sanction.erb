@@ -1,7 +1,7 @@
 <h1>Add Sanction For <%=@resident.name%></h1>
 
 <form class="" action="/sanctions/show" method="post">
-  <input type="checkbox" name="id" value="<%=@resident.id%>">
+  <input type="hidden" name="id" value="<%=@resident.id%>">
   <input type="text" name="sanction[name]" value="">
   <input type="submit" name="" value="Add Sanction">
 

@@ -9,7 +9,6 @@ class SanctionController < ApplicationController
   post '/sanctions/show' do
     @resident = Resident.find_by_id(params[:id])
     @sanction = Sanction.create(params[:sanction])
-    binding.pry
     @resident.sanctions << @sanction
     @sanction.save
     @resident.save
