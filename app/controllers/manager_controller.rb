@@ -9,7 +9,7 @@ class ManagerController < ApplicationController
   end
 
   post '/signup' do
-    if Manager.all.detect {|manager| manager.name == params[:manager][:name]}
+    if Manager.all.detect {|manager| manager.name == params[:manager][:name]} || params[:manager][:password]=="" || params[:manager][:name] == "" || params[:manager][:email] == ""
       redirect '/signup'
     else
     @manager= Manager.create(params[:manager])
@@ -29,7 +29,11 @@ class ManagerController < ApplicationController
 
   get '/login' do
     erb :'managers/login'
-  end 
+  end
 
+
+  post '/login' do
+
+  end
 
 end
