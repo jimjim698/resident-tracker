@@ -43,5 +43,10 @@ class ManagerController < ApplicationController
   end
 
 
+  get '/signout' do
+    session.clear
+    redirect '/'
+  end
+
 
 end
