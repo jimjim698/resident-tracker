@@ -33,7 +33,15 @@ class ManagerController < ApplicationController
 
 
   post '/login' do
-
+    @manager = Manager.find_by(name: params[:name])
+    if @manager && @manager.authenticate(params[:password])
+      session[:user_id] = @manager.id
+      redirect "/managers/#{session[:user_id]}"
+    else
+      redirect '/login'
+    end
   end
+
+
 
 end
