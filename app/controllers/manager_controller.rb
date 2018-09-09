@@ -9,9 +9,19 @@ class ManagerController < ApplicationController
       redirect '/signup'
     else
     @manager= Manager.create(params[:manager])
-    session[:user_id]= @manager.id 
+    session[:user_id]= @manager.id
     erb :'/managers/show'
   end
+  end
+
+  get '/managers/:id' do
+    if !logged_in?
+      redirect '/'
+    else
+      @manager= Manager.find_by_id(params[:id])
+      erb :'/managers/show'
+    end 
+
   end
 
 
