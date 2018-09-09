@@ -5,11 +5,13 @@ class ResidentController < ApplicationController
   end
 
   post '/residents/new' do
-    if Resident.all.detect {|resident| resident.name == params[:resident][:name]} || params[:resident][:name]=="" || params[:resident][:age] == "" || params[:resident][:room_number] == ""
+    @manager = Manager.find_by_id(session[:user_id])
+    if @manager.residents.detect {|resident| resident.name == params[:resident][:name].capitalize} || params[:resident][:name]=="" || params[:resident][:age] == "" || params[:resident][:room_number] == ""
 
       redirect '/residents/new'
     else
-      @resident = Resident.create(params[:resident])
+      @resident = Resident.new(params[:resident])
+      @resident.name = @resident.name.capitalize
       @resident.manager_id = session[:user_id]
       @resident.save
       redirect "/managers/#{session[:user_id]}"
@@ -19,7 +21,7 @@ class ResidentController < ApplicationController
   get '/residents/:id' do
     @resident = Resident.find_by_id(params[:id])
     erb :'/residents/show'
-    
+
 
   end
 
