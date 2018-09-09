@@ -18,11 +18,18 @@ class ResidentController < ApplicationController
     end
   end
 
+
+
+  get '/residents/discharge' do
+    erb :'/residents/discharge'
+  end
+
+
   get '/residents/:id' do
     @resident = Resident.find_by_id(params[:id])
     erb :'/residents/show'
 
-
   end
+
 
 end

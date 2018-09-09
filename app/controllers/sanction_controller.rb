@@ -35,10 +35,10 @@ class SanctionController < ApplicationController
     @sanctions=[]
     params[:resident][:sanction_ids].each do |s_id|
       @sanctions<< Sanction.find_by_id(s_id)
+    end
       @resident.sanctions = @sanctions
       @resident.save
       erb :'/sanctions/show'
-    end
 
   end
 
