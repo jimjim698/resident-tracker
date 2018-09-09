@@ -16,8 +16,15 @@
 <form class="" action="/sanctions/new" method="post">
   <input type="hidden" name="id" value="<%=@resident.id%>">
   <input type="submit" name="" value="Add Sanction">
+  <br></br>
+  </form>
+
+  <form class="" action="/sanctions/remove" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="id" value="<%=@resident.id%>">
+    <input type="submit" name="" value="Remove Sanction">
 
 </form>
-<a href="/sanctions/new">Add Sanction</a>
+
 
 <br></br>

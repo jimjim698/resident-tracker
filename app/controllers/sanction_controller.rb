@@ -20,5 +20,16 @@ class SanctionController < ApplicationController
 
   end
 
+  post '/sanctions/remove' do
+    @resident = Resident.find_by_id(params[:id])
+    erb :'/sanctions/remove'
+  end
+
+  put '/sanctions/remove' do
+    @resident = Resident.find_by_id(params[:id])
+    erb :'/sanctions/remove'
+  end
+
+
 
 end
