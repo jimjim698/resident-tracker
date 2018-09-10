@@ -5,6 +5,7 @@ class ResidentController < ApplicationController
   end
 
   post '/residents/new' do
+    not_logged_in
     @manager = Manager.find_by_id(session[:user_id])
     if @manager.residents.detect {|resident| resident.name == params[:resident][:name].capitalize} || params[:resident][:name]=="" || params[:resident][:age] == "" || params[:resident][:room_number] == ""
 
@@ -21,6 +22,7 @@ class ResidentController < ApplicationController
 
 
   get '/residents/discharge' do
+    not_logged_in
     @manager = Manager.find_by_id(session[:user_id])
     erb :'/residents/discharge'
   end
@@ -41,6 +43,7 @@ class ResidentController < ApplicationController
 
 
   get '/residents/:id' do
+    not_logged_in
     @resident = Resident.find_by_id(params[:id])
     erb :'/residents/show'
 

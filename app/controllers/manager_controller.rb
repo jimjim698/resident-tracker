@@ -21,13 +21,11 @@ class ManagerController < ApplicationController
   end
 
   get '/managers/:id' do
-    if !logged_in?
-      redirect '/'
-    else
+
+    not_logged_in
       @manager= Manager.find_by_id(params[:id])
 
       erb :'/managers/show'
-    end
   end
 
   get '/login' do
