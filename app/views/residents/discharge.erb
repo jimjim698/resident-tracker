@@ -1,11 +1,13 @@
 <h1>Discharge Residents</h1>
 
 <form class="" action="/residents/discharge" method="post">
+
+  <h2>Deselect residents you would like to remove</h2>
   <%@manager.residents.each do |resident|%>
 <p>  <input type="checkbox" name="manager[resident_ids][]" value="<%=resident.id%>" <%='checked' if @manager.residents.include?(resident)%>>
   <%=resident.name%></p>
   <%end%>
 
   <input type="submit" name="" value="Discharge Client(s)">
-  
+
 </form>

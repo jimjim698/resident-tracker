@@ -2,7 +2,7 @@
 
 <form class="" action="/sanctions/removed" method="post">
   <input type="hidden" name="resident[id]" value="<%=@resident.id%>">
-
+  <h2>Deselect sanctions you would like to remove</h2>
   <%@resident.sanctions.each do |sanction|%>
   <p><input type="checkbox" name="resident[sanction_ids][]" value="<%=sanction.id%>" <%='checked' if @resident.sanctions.include?(sanction)%>>
   <%=sanction.name%></p></input>
