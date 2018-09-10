@@ -33,11 +33,18 @@ class SanctionController < ApplicationController
   post '/sanctions/removed' do
     @resident = Resident.find_by_id(params[:resident][:id])
     @sanctions=[]
+
+    if !params[:resident][:sanction_ids]
+      @resident.sanctions = @sanctions
+      @resident.save 
+      erb :'/sanctions/show'
+    else
     params[:resident][:sanction_ids].each do |s_id|
       @sanctions<< Sanction.find_by_id(s_id)
     end
       @resident.sanctions = @sanctions
       @resident.save
+    end
       erb :'/sanctions/show'
 
   end
