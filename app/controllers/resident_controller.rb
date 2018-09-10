@@ -1,6 +1,7 @@
 class ResidentController < ApplicationController
 
   get '/residents/new' do
+    not_logged_in
     erb :'/residents/add_resident'
   end
 
@@ -45,7 +46,11 @@ class ResidentController < ApplicationController
   get '/residents/:id' do
     not_logged_in
     @resident = Resident.find_by_id(params[:id])
+    if @resident.manager.id == session[:user_id]
     erb :'/residents/show'
+  else
+    erb :'/access_denied'
+  end 
 
   end
 
