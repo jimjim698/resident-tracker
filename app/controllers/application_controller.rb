@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
       redirect "/managers/#{session[:user_id]}"
     else
     erb :index
-  end 
+  end
   end
 
 
@@ -30,7 +30,7 @@ class ApplicationController < Sinatra::Base
 
   def not_logged_in
     if !logged_in?
-    redirect '/login'
+    redirect '/login?error=Please log in to continue'
   end
   end
 

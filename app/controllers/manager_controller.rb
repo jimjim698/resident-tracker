@@ -29,11 +29,13 @@ class ManagerController < ApplicationController
   end
 
   get '/login' do
+    @error_message = params[:error]
     erb :'managers/login'
   end
 
 
   post '/login' do
+
     @manager = Manager.find_by(name: params[:name])
     if @manager && @manager.authenticate(params[:password])
       session[:user_id] = @manager.id
