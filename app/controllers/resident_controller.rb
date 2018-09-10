@@ -25,6 +25,20 @@ class ResidentController < ApplicationController
     erb :'/residents/discharge'
   end
 
+  post '/residents/discharge' do
+
+    @residents = []
+    @manager = Manager.find_by_id(session[:user_id])
+    params[:manager][:resident_ids].each do |r_id|
+    @residents << Resident.find_by_id(r_id)
+  end
+    @manager.residents = @residents
+    @manager.save
+    redirect "/managers/#{session[:user_id]}"
+
+  end
+
+
 
   get '/residents/:id' do
     @resident = Resident.find_by_id(params[:id])

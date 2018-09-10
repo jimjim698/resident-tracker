@@ -2,7 +2,7 @@
 
 <form class="" action="/residents/discharge" method="post">
   <%@manager.residents.each do |resident|%>
-<p>  <input type="checkbox" name="" value="" <%='checked' if @manager.residents.include?(resident)%>>
+<p>  <input type="checkbox" name="manager[resident_ids][]" value="<%=resident.id%>" <%='checked' if @manager.residents.include?(resident)%>>
   <%=resident.name%></p>
   <%end%>
 
