@@ -29,15 +29,20 @@ class ResidentController < ApplicationController
   end
 
   post '/residents/discharge' do
-
     @residents = []
     @manager = Manager.find_by_id(session[:user_id])
+    if params.empty?
+      @manager.residents = @residents
+      redirect "/managers/#{session[:user_id]}"
+    else
+
     params[:manager][:resident_ids].each do |r_id|
     @residents << Resident.find_by_id(r_id)
   end
     @manager.residents = @residents
     @manager.save
     redirect "/managers/#{session[:user_id]}"
+  end
 
   end
 
@@ -50,7 +55,7 @@ class ResidentController < ApplicationController
     erb :'/residents/show'
   else
     erb :'/access_denied'
-  end 
+  end
 
   end
 
