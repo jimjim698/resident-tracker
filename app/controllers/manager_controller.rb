@@ -24,8 +24,12 @@ class ManagerController < ApplicationController
 
     not_logged_in
       @manager= Manager.find_by_id(params[:id])
+      if @manager.id != session[:user_id]
+        erb :'/access_denied'
+      else
 
       erb :'/managers/show'
+    end 
   end
 
   get '/login' do
