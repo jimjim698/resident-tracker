@@ -12,8 +12,11 @@ class ResidentController < ApplicationController
 
       redirect '/residents/new'
     else
-      @resident = Resident.new(params[:resident])
-      @resident.name = @resident.name.capitalize
+      @name = params[:resident][:name].split(" ").collect{|w| w.capitalize}.join(" ")
+      @resident = Resident.find_or_create_by(name: @name)
+      @resident.age= params[:resident][:age]
+      @resident.room_number = params[:resident][:room_number]
+      @resident.name = @resident.name.split(" ").collect{|w| w.capitalize}.join(" ")
       @resident.manager_id = session[:user_id]
       @resident.save
       redirect "/managers/#{session[:user_id]}"
