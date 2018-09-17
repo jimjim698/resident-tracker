@@ -9,7 +9,7 @@ class ResidentController < ApplicationController
     not_logged_in
     @manager = Manager.find_by_id(session[:user_id])
     if @manager.residents.detect {|resident| resident.name == params[:resident][:name].capitalize} || params[:resident][:name]=="" || params[:resident][:age] == "" || params[:resident][:room_number] == ""
-
+ # @manager.residents.find_by(name: params[:resident][:name])
       redirect '/residents/new'
     else
       @name = params[:resident][:name].split(" ").collect{|w| w.capitalize}.join(" ")
@@ -53,7 +53,7 @@ class ResidentController < ApplicationController
     @resident = Resident.find_by_id(params[:id])
     @resident.delete
     redirect "/managers/#{session[:user_id]}"
-  end 
+  end
 
 
 
@@ -66,6 +66,21 @@ class ResidentController < ApplicationController
     erb :'/access_denied'
   end
 
+  end
+
+  get '/residents/:id/edit' do
+    @resident = Resident.find_by_id(params[:id])
+    if @resident.manager.id = session[:user_id]
+      erb :'/residents/edit'
+    else
+      erb :'/access_denied'
+    end
+  end
+
+  put '/residents/:id' do
+    @resident = Resident.find_by_id(params[:id])
+    @resident.update(params[:resident])
+    redirect "/residents/#{@resident.id}"
   end
 
 
