@@ -49,7 +49,7 @@ class ResidentController < ApplicationController
 
   end
 
-  post '/residents/86' do
+  delete '/residents/86' do
     @resident = Resident.find_by_id(params[:id])
     @resident.delete
     redirect "/managers/#{session[:user_id]}"
