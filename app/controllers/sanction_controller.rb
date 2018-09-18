@@ -1,19 +1,14 @@
 class SanctionController < ApplicationController
 
-  post '/sanctions/new' do
+
+  post '/sanctions/new' do # post residents/:resident_id/sanctions
     not_logged_in
     @resident = Resident.find_by_id(params[:id])
 
-    erb :'/sanctions/add_sanction'
-  end
-
-  post '/sanctions/show' do
-    not_logged_in
-    @resident = Resident.find_by_id(params[:id])
-    if @resident.sanctions.detect{|sanction| sanction.name == params[:sanction][:name]} || params[:sanction][:name] == ""
+    if @resident.sanctions.detect{|sanction| sanction.name == params[:name]} || params[:name] == ""
       erb :'/sanctions/show'
     else
-    @sanction = Sanction.create(params[:sanction])
+    @sanction = Sanction.create(name: params[:name])
     @resident.sanctions << @sanction
     @sanction.save
     @resident.save
@@ -22,18 +17,9 @@ class SanctionController < ApplicationController
 
   end
 
+
+
   post '/sanctions/remove' do
-    not_logged_in
-    @resident = Resident.find_by_id(params[:id])
-    erb :'/sanctions/remove'
-  end
-
-  put '/sanctions/remove' do
-    @resident = Resident.find_by_id(params[:id])
-    erb :'/sanctions/remove'
-  end
-
-  post '/sanctions/removed' do
     not_logged_in
     @resident = Resident.find_by_id(params[:resident][:id])
     @sanctions=[]
@@ -51,6 +37,16 @@ class SanctionController < ApplicationController
     end
       erb :'/sanctions/show'
 
+  end
+
+  get '/sanctions/:id/add' do
+    @resident = Resident.find_by_id(params[:id])
+    erb :'/sanctions/add_sanction'
+  end
+
+  get '/sanctions/:id/remove' do
+    @resident = Resident.find_by_id(params[:id])
+    erb :'/sanctions/remove'
   end
 
 

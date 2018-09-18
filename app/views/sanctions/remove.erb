@@ -1,6 +1,6 @@
 <h1><%=@resident.name%></h1>
 
-<form class="" action="/sanctions/removed" method="post">
+<form class="" action="/sanctions/remove" method="post">
   <input type="hidden" name="resident[id]" value="<%=@resident.id%>">
   <h2>Deselect sanctions you would like to remove</h2>
   <%@resident.sanctions.each do |sanction|%>

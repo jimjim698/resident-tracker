@@ -13,20 +13,11 @@
 
 </ul>
 <%end%>
-<form class="" action="/sanctions/new" method="post">
-  <input type="hidden" name="id" value="<%=@resident.id%>">
-  <input type="submit" name="" value="Add Sanction">
-  <br></br>
-  </form>
 
-  <form class="" action="/sanctions/remove" method="post">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="hidden" name="id" value="<%=@resident.id%>">
-    <input type="submit" name="" value="Remove Sanction">
-    <br></br>
-</form>
-
-
+<a href="/sanctions/<%=@resident.id%>/add">Add Sanction</a>
+<br></br>
+<a href="/sanctions/<%=@resident.id%>/remove">Remove Sanction</a>
+  
 <form class="" action="/residents/86" method="post">
   <input type="hidden" name="_method" value="DELETE">
   <input type="hidden" name="id" value="<%=@resident.id%>">
