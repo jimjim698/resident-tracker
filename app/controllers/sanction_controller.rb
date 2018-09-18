@@ -3,12 +3,20 @@ class SanctionController < ApplicationController
 
   get '/sanctions/:id/add' do
     @resident = Resident.find_by_id(params[:id])
-    erb :'/sanctions/add_sanction'
+    if @resident.manager.id = session[:user_id]
+      erb :'/sanctions/add_sanction'
+    else
+      erb :'/access_denied'
+    end
   end
 
   get '/sanctions/:id/remove' do
     @resident = Resident.find_by_id(params[:id])
-    erb :'/sanctions/remove'
+    if @resident.manager.id = session[:user_id]
+      erb :'/sanctions/remove'
+    else
+      erb :'/access_denied'
+    end
   end
 
 
@@ -25,7 +33,6 @@ class SanctionController < ApplicationController
     @resident.save
   end
     erb :'/sanctions/show'
-
   end
 
 
@@ -47,12 +54,7 @@ class SanctionController < ApplicationController
       @resident.save
     end
       erb :'/sanctions/show'
-
   end
-
-
-
-
 
 
 end
