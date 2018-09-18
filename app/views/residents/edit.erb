@@ -1,8 +1,14 @@
+<h1>Edit Resident Information</h1>
+<br></br>
+
 <form class="" action="/residents/<%=@resident.id%>" method="post">
   <input type="hidden" name="_method" value="PUT">
-  <input type="text" name="resident[name]" value="<%=@resident.name%>">
-    <input type="text" name="resident[age]" value="<%=@resident.age%>">
-    <input type="text" name="resident[room_number]" value="<%=@resident.room_number%>">
+  <p><h5><label>Name: </label></h5>
+  <input type="text" name="resident[name]" value="<%=@resident.name%>"></p>
+<p><h5><label>Age: </label></h5>
+    <input type="text" name="resident[age]" value="<%=@resident.age%>"></p>
+    <p><h5><label>Room Number: </label><h5>
+    <input type="text" name="resident[room_number]" value="<%=@resident.room_number%>"></p>
     <input type="submit" name="" value="Update Resident Information">
 
 </form>

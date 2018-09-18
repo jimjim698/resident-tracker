@@ -1,7 +1,18 @@
 class SanctionController < ApplicationController
 
 
-  post '/sanctions/new' do # post residents/:resident_id/sanctions
+  get '/sanctions/:id/add' do
+    @resident = Resident.find_by_id(params[:id])
+    erb :'/sanctions/add_sanction'
+  end
+
+  get '/sanctions/:id/remove' do
+    @resident = Resident.find_by_id(params[:id])
+    erb :'/sanctions/remove'
+  end
+
+
+  post '/sanctions/new' do
     not_logged_in
     @resident = Resident.find_by_id(params[:id])
 
@@ -39,15 +50,7 @@ class SanctionController < ApplicationController
 
   end
 
-  get '/sanctions/:id/add' do
-    @resident = Resident.find_by_id(params[:id])
-    erb :'/sanctions/add_sanction'
-  end
 
-  get '/sanctions/:id/remove' do
-    @resident = Resident.find_by_id(params[:id])
-    erb :'/sanctions/remove'
-  end
 
 
 

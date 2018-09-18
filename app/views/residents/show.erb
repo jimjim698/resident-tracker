@@ -14,10 +14,13 @@
 </ul>
 <%end%>
 
-<a href="/sanctions/<%=@resident.id%>/add">Add Sanction</a>
-<br></br>
-<a href="/sanctions/<%=@resident.id%>/remove">Remove Sanction</a>
-  
+<p><a href="/sanctions/<%=@resident.id%>/add">Add Sanction</a></p>
+
+<p><a href="/sanctions/<%=@resident.id%>/remove">Remove Sanction</a></p>
+<p><a href="/residents/<%=@resident.id%>/edit">Edit Resident Information</a></p>
+
+
+
 <form class="" action="/residents/86" method="post">
   <input type="hidden" name="_method" value="DELETE">
   <input type="hidden" name="id" value="<%=@resident.id%>">
@@ -25,9 +28,8 @@
 
 </form>
 <br></br>
-<a href="/residents/<%=@resident.id%>/edit">Edit Resident Information</a>
-<br></br>
-
 <a href="/managers/<%=session[:user_id]%>">Return To View Residents</a>
+
+
 
 <br></br>
