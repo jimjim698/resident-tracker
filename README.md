@@ -4,7 +4,7 @@ Resident tracker is a tool for halfway house managers to track residents. This a
 
 ## Usage
 
-To use this app, clone and run 'rake db:migrate' and 'bundle install'. Next run 'shotgun and copy and paste the link into your browser.
+To use this app, clone and run 'bundle install' and 'rake db:migrate' . Next run 'bundle exec shotgun' and copy and paste the link into your browser.
 
 
 ###Contributing
